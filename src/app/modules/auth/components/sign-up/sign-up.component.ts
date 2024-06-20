@@ -26,7 +26,7 @@ export class SignUpComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
-      userType: ['', Validators.required] // Added userType field with default value 'User'
+     
 
     });
   }
@@ -53,7 +53,7 @@ export class SignUpComponent implements OnInit {
       age: 0,
       address: '',
       phoneNumber: '',
-      role: this.signupForm.value.userType
+      role: "user"
     };
 
     if (this.signupForm.valid) {
@@ -61,7 +61,10 @@ export class SignUpComponent implements OnInit {
         response => {
           this.newUser = response; // Assign the API response to newUser variable
           console.log("Here's the new user:", JSON.stringify(this.newUser, null, 2));
-          this.router.navigate(['/verificationCode', this.newUser._id]); // Navigate to verification code page with user ID
+          //this.router.navigate(['/verificationCode', this.newUser._id]); 
+          const url = "/verificationCode/"+this.newUser._id
+    this.router.navigateByUrl(url)
+          // Navigate to verification code page with user ID
         },
         error => {
           console.error(error);

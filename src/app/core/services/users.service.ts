@@ -3,12 +3,16 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 export interface User {
   _id?: string;
-  name: string;
-  email: string;
-  password: string;
-  age: number;
-  address: string;
-  role: 'admin' | 'user';
+    name?:string;
+    email?:string;
+    password?:string;
+    age?:number;
+    address?:string;
+    verified?:boolean;
+    verificationCode?:string;
+    phoneNumber?:string;
+    token?:string;
+    role?:string;
 }
 @Injectable({
   providedIn: 'root'

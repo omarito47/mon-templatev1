@@ -9,7 +9,7 @@ import { User, UsersService } from 'src/app/core/services/users.service';
   styleUrls: ['./user-form.component.scss']
 })
 export class UserFormComponent implements OnInit {
-  user: User = { name: '', email: '', password: '', age: 0, address: '', role: 'user' };
+  user: User = { name: '', email: '', password: '', age: 0, address: '', role: 'user' ,phoneNumber:''};
   isEditMode: boolean = false;
   constructor(
     private userService: UsersService,

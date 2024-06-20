@@ -102,6 +102,10 @@
             <mat-icon mat-list-icon class="icon-link" >list</mat-icon>
             <span >Reservations</span>
           </mat-list-item>
+          <!-- <mat-list-item [routerLink]="'admin/all-reservations'" routerLinkActive="active" class="list-item">
+            <mat-icon mat-list-icon class="icon-link" >list</mat-icon>
+            <span >Reservations</span>
+          </mat-list-item> -->
 
     </mat-nav-list>
 
@@ -115,74 +119,3 @@
 </mat-sidenav-container>
 
 
-<!--
-<div  style="width: 100%; height: 100%; background: rgb(255, 255, 255); z-index: 20; position: relative;">
-  <as-split direction="horizontal" unit="pixel" class="sidenav-container sidenav-split-container" autosize id="sidenav">
-    <as-split-area size="250"
-              #drawer class="sidenav menu-split swing-in-left-bck"
-              [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-               >
-
-      <mat-nav-list class=" menu-style" >
-        <mat-list-item [routerLink]="'liste-user'" routerLinkActive="active" class="list-item">
-          <mat-icon mat-list-icon class="icon-link" >home_outline</mat-icon>
-          <span >Home</span>
-        </mat-list-item>
-        <mat-list-item [routerLink]="'view-user'" routerLinkActive="active" class="list-item">
-          <mat-icon mat-list-icon class="icon-link">group</mat-icon>
-          <span >User</span>
-        </mat-list-item>
-        <mat-list-item [routerLink]="'liste-notification'" routerLinkActive="active" class="list-item">
-          <mat-icon mat-list-icon class="icon-link">forward_to_inbox</mat-icon>
-          <span >Messages</span>
-        </mat-list-item>
-        <mat-list-item [routerLink]="'liste-accordion'" routerLinkActive="active" class="list-item">
-          <mat-icon mat-list-icon class="icon-link">stairs</mat-icon>
-          <span >Accordion</span>
-        </mat-list-item>
-        <mat-list-item [routerLink]="'liste-card'" routerLinkActive="active" class="list-item">
-          <mat-icon mat-list-icon class="icon-link">dashboard</mat-icon>
-          <span >Card</span>
-        </mat-list-item>
-        <mat-list-item [routerLink]="'timeline-vertical'" routerLinkActive="active" class="list-item">
-          <mat-icon mat-list-icon class="icon-link" >timeline</mat-icon>
-          <span >Timeline</span>
-        </mat-list-item>
-        <mat-list-item [routerLink]="'stepper-horizontal'" routerLinkActive="active" class="list-item">
-          <mat-icon mat-list-icon class="icon-link" >123</mat-icon>
-          <span >Stepper Horizontal</span>
-        </mat-list-item>
-        <mat-list-item [routerLink]="'stepper-vertical'" routerLinkActive="active" class="list-item">
-          <mat-icon mat-list-icon class="icon-link" >123</mat-icon>
-          <span >Stepper Vertical</span>
-        </mat-list-item>
-        <mat-list-item [routerLink]="'form-app'" routerLinkActive="active" class="list-item">
-          <mat-icon mat-list-icon class="icon-link" >check_box</mat-icon>
-          <span >Form Angular Material</span>
-        </mat-list-item>
-        <mat-list-item [routerLink]="'bootstrap-form'" routerLinkActive="active" class="list-item">
-          <mat-icon mat-list-icon class="icon-link" >radio_button_checked</mat-icon>
-          <span >Bootstrap Form</span>
-        </mat-list-item>
-        <mat-list-item [routerLink]="'workflow'" routerLinkActive="active" class="list-item">
-          <mat-icon mat-list-icon class="icon-link" >dashboard_customize</mat-icon>
-          <span >Workflow</span>
-        </mat-list-item>
-
-      </mat-nav-list>
-
-    </as-split-area>
-    <as-split-area >
-      <div class="row">
-        <div class="col-12">
-
-          <router-outlet></router-outlet>
-        </div>
-
-      </div>
-
-    </as-split-area>
-  </as-split>
-</div>
-
- -->

@@ -40,6 +40,6 @@ export class NavbarComponent {
 
   logout(){
     localStorage.clear()
-    this.router.navigateByUrl('/login')
+    this.router.navigateByUrl('/auth/login')
   }
 }

@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { MatDialog } from '@angular/material/dialog';
@@ -13,20 +14,33 @@ import Swal from 'sweetalert2';
 })
 export class ListeUserComponent implements OnInit {
   users: User[] = [];
+  private apiUrl = 'http://127.0.0.1:9090/user/';
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjVmNTUwODdkNmMwMzkyYjgzZDYwY2MiLCJpYXQiOjE3MTc1MjU4ODR9.-hYgaJCFKQACQP38vhEyr_WsWfyVpOk5DRiP_esDHGM'
+    })
+  };
 
   constructor(
     private userService: UsersService,
-    private router : Router
+    private router : Router,
+    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
     this.getAll();
   }
-
+ // get all users
   getAll() {
-    this.userService.getUsers().subscribe((users) => {
-      this.users = users;
-    });
+    this.http.get<User[]>(this.apiUrl, this.httpOptions).subscribe(
+      (data: User[]) => {
+        this.users = data;
+        console.log(this.users);
+      },
+      (error) => {
+        console.error('Error fetching users', error);
+      }
+    );
   }
 
   editUser(id:any){
