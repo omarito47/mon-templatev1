@@ -11,6 +11,7 @@ import { AtelierComponent } from './modules/atelier/atelier.component';
   declarations: [
     AppComponent,
     AtelierComponent,
+    
   ],
   imports: [
     BrowserModule,

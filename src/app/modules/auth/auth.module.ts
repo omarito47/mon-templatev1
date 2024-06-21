@@ -17,6 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreatAccountComponent } from './components/creat-account/creat-account.component';
 import { LoginGoogleComponent } from './components/login-google/login-google.component';
 import { VerificationCodeComponent } from './components/verification-code/verification-code.component';
+import { ForgetPwdStep1Component } from './components/forget-pwd-step1/forget-pwd-step1.component';
+import { ForgetPwdStep2Component } from './components/forget-pwd-step2/forget-pwd-step2.component';
 
 
 
@@ -31,7 +33,9 @@ import { VerificationCodeComponent } from './components/verification-code/verifi
     SelectAccountComponent,
     CreatAccountComponent,
     LoginGoogleComponent,
-    VerificationCodeComponent
+    VerificationCodeComponent,
+    ForgetPwdStep1Component,
+    ForgetPwdStep2Component
   ],
   imports: [
     CommonModule,

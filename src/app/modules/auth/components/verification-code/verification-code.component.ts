@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { UsersService,User } from 'src/app/core/services/users.service';
+
 
 
 @Component({
@@ -13,12 +15,14 @@ import { Router } from '@angular/router';
 export class VerificationCodeComponent {
   codeForm!: FormGroup;
   validCode!: boolean ;
+  user!:User;
 
   constructor(
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private userService: UsersService,
 
   ) { }
 
@@ -37,11 +41,22 @@ export class VerificationCodeComponent {
     const url = `http://127.0.0.1:9090/user/verify/${id}/${code}`;
     this.http.get(url).subscribe(
       response => {
+        this.validCode=true;
         console.log(response);
         console.log("this is api code: " + code)
+        
         // Navigate to the sign-in page if response is 200
-        this.validCode=true;
-        this.router.navigate(['/signin']);
+        
+        if(localStorage.getItem('fromforgetPassword')=="true"){
+         
+          this.router.navigate(['/auth/forgetpwd_step2',id]);
+
+
+        }else{
+          this.router.navigate(['/auth/login']);
+
+        }
+        
       },
       error => {
         

@@ -41,6 +41,7 @@ export class SignUpComponent implements OnInit {
   }
 
   signUp() {
+    
     const url = 'http://127.0.0.1:9090/user/';
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
@@ -61,9 +62,11 @@ export class SignUpComponent implements OnInit {
         response => {
           this.newUser = response; // Assign the API response to newUser variable
           console.log("Here's the new user:", JSON.stringify(this.newUser, null, 2));
-          //this.router.navigate(['/verificationCode', this.newUser._id]); 
-          const url = "/verificationCode/"+this.newUser._id
-    this.router.navigateByUrl(url)
+          this.router.navigate(['/auth/verificationCode', this.newUser._id]); 
+          localStorage.setItem('fromforgetPassword', "false");
+
+    //       const url = "/verificationCode/"+this.newUser._id
+    // this.router.navigateByUrl(url)
           // Navigate to verification code page with user ID
         },
         error => {

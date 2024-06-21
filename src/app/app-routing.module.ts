@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthRoutingModule } from './modules/auth/auth-routing.module';
 
 const routes: Routes = [
   {
@@ -12,6 +13,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/layout/layout.module').then((m) => m.LayouttModule),
   },
+  
   
   
   

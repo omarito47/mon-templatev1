@@ -30,7 +30,10 @@ export class UsersService {
   getUserById(id: string): Observable<User> {
     return this.http.get<User>(`${this.apiUrl}/${id}`);
   }
-
+  //omar.taamallah@pardus-it.com
+  getUserByEmail(email: string): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/getuserbyEmail/${email}`);
+  }
   createUser(user: User): Observable<User> {
     return this.http.post<User>(this.apiUrl, user);
   }
