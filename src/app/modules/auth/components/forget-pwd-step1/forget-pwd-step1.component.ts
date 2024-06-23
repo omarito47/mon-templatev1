@@ -14,6 +14,8 @@ export class ForgetPwdStep1Component {
   validCode!: boolean ;
   user:User;
   formSubmitted = false;
+  showErrorMessage = false; // New variable to control error message display
+
  
   constructor(
     private route: ActivatedRoute,
@@ -54,15 +56,21 @@ export class ForgetPwdStep1Component {
       console.error('Error:', error);
     }
   }
-  getUserByEmail(){
-    this.userService.getUserByEmail(this.emailForm.get('email')!.value).subscribe(user => {
-      this.user = user;
-      console.log(this.user);
-      this.sendVerificationCode();
-      
-      this.router.navigate(['/auth/verificationCode', this.user._id]);
-      localStorage.setItem('fromforgetPassword', "true");
-    });
+  getUserByEmail() {
+    this.userService.getUserByEmail(this.emailForm.get('email')!.value).subscribe(
+      user => {
+        this.user = user;
+        console.log("==>" + this.user);
+        this.sendVerificationCode();
+  
+        this.router.navigate(['/auth/verificationCode', this.user._id]);
+        localStorage.setItem('fromforgetPassword', "true");
+      },
+      error => {
+        console.error(error);
+        this.showErrorMessage = true; // Set showErrorMessage to true in case of an error
+      }
+    );
   }
   
   

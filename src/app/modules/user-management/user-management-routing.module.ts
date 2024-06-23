@@ -3,13 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListeUserComponent } from './components/liste-user/liste-user.component';
 import { ViewUserComponent } from './components/view-user/view-user.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
+import { AuthGuard } from 'src/app/core/services/auth.guard';
+import { DashbordComponent } from './components/dashbord/dashbord.component';
 
 const routes: Routes = [
-  { path: 'liste-user', component: ListeUserComponent },
-  { path: 'view-user', component: ViewUserComponent },
-  { path: 'users/add', component: UserFormComponent },
-  { path: 'users/edit/:id', component: UserFormComponent},
-  { path: '', redirectTo: 'liste-user', pathMatch: 'full' },
+  { path: 'liste-user', component: ListeUserComponent ,canActivate: [AuthGuard]},
+  { path: 'view-user', component: ViewUserComponent,canActivate: [AuthGuard] },
+  { path: 'users/add', component: UserFormComponent ,canActivate: [AuthGuard]},
+  { path: 'users/edit/:id', component: UserFormComponent,canActivate: [AuthGuard]},
+  {path: 'dashboard', component:DashbordComponent,canActivate: [AuthGuard]}
+
 ];
 
 @NgModule({

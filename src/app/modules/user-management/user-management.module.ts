@@ -23,11 +23,13 @@ import { AngularSplitModule } from 'angular-split';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { UserFormComponent } from './components/user-form/user-form.component';
+import { DashbordComponent } from './components/dashbord/dashbord.component';
 @NgModule({
   declarations: [
     ListeUserComponent,
     ViewUserComponent,
     UserFormComponent,
+    DashbordComponent,
   ],
   imports: [
     CommonModule,

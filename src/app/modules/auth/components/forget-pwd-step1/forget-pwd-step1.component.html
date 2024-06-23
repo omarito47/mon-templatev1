@@ -8,8 +8,11 @@
      
       <form [formGroup]="emailForm" (ngSubmit)="getUserByEmail()">
         <input type="text" formControlName="email" placeholder="Enter your email">
-        <div *ngIf="emailForm.get('email')!.invalid && emailForm.get('code')!.touched || validCode==false">
+        <div class="error-message" *ngIf="emailForm.get('email')!.invalid && emailForm.get('code')!.touched || validCode==false">
           <p style="color: red;">Your code isn't valid or wrong</p>
+        </div>
+        <div class="error-message" *ngIf="showErrorMessage">
+          User not found with this email
         </div>
         <button type="submit">Verify</button>
       </form>

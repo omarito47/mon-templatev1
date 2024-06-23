@@ -12,7 +12,8 @@ import { User } from 'src/app/core/model/user';
 export class SignUpComponent implements OnInit {
   signupForm!: FormGroup;
   formSubmitted = false;
-  public newUser! : User;
+  public newUser!: User;
+  showErrorMessage = false; // New variable to control error message display
 
   constructor(
     private http: HttpClient,
@@ -26,8 +27,6 @@ export class SignUpComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
-     
-
     });
   }
 
@@ -41,38 +40,38 @@ export class SignUpComponent implements OnInit {
   }
 
   signUp() {
-    
     const url = 'http://127.0.0.1:9090/user/';
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
 
-    const body = {
-      name: this.signupForm.value.username,
-      email: this.signupForm.value.email,
-      password: this.signupForm.value.password,
-      age: 0,
-      address: '',
-      phoneNumber: '',
-      role: "user"
-    };
+    const { username, email, password, confirmPassword } = this.signupForm.value;
 
-    if (this.signupForm.valid) {
+    if (this.signupForm.valid && password === confirmPassword) {
+      const body = {
+        name: username,
+        email,
+        password,
+        age: 0,
+        address: '',
+        phoneNumber: '',
+        role: 'user'
+      };
+
       this.http.post<User>(url, body, { headers }).subscribe(
         response => {
           this.newUser = response; // Assign the API response to newUser variable
           console.log("Here's the new user:", JSON.stringify(this.newUser, null, 2));
-          this.router.navigate(['/auth/verificationCode', this.newUser._id]); 
-          localStorage.setItem('fromforgetPassword', "false");
-
-    //       const url = "/verificationCode/"+this.newUser._id
-    // this.router.navigateByUrl(url)
-          // Navigate to verification code page with user ID
+          this.router.navigate(['/auth/verificationCode', this.newUser._id]);
+          localStorage.setItem('fromforgetPassword', 'false');
         },
         error => {
           console.error(error);
+          this.showErrorMessage = true; // Display the error message
         }
       );
+    } else {
+      this.signupForm.get('confirmPassword')?.setErrors({ 'passwordMismatch': true });
     }
   }
 }

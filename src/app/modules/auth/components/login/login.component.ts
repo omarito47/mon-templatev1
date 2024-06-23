@@ -4,7 +4,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,6 +12,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 export class LoginComponent implements OnInit {
   signinForm!: FormGroup;
   formSubmitted = false;
+  showErrorMessage = false; // New variable to control error message display
 
   constructor(
     private http: HttpClient,
@@ -26,7 +26,8 @@ export class LoginComponent implements OnInit {
       password: ['', [Validators.required]]
     });
   }
-  navigateToForgotPassword(){
+
+  navigateToForgotPassword() {
     this.router.navigate(['/forgot-password']);
   }
 
@@ -38,7 +39,7 @@ export class LoginComponent implements OnInit {
         email: this.signinForm.value.email,
         password: this.signinForm.value.password
       };
-      
+
       this.http.post('http://127.0.0.1:9090/user/signin', formData, { headers: { 'Content-Type': 'application/json' } })
         .subscribe(
           (response: any) => {
@@ -46,16 +47,17 @@ export class LoginComponent implements OnInit {
             // Store user ID and token in local storage
             localStorage.setItem('userId', response.userId);
             localStorage.setItem('token', response.token);
+            localStorage.setItem('role', response.role);
 
             // Redirect to the home page
             this.router.navigate(['/liste-user']);
           },
           (error) => {
-            console.error(error);
+            console.error(error.error);
+            this.showErrorMessage = true; // Display the error message
             // Handle the error here
           }
         );
     }
   }
-
 }

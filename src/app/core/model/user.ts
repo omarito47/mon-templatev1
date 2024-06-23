@@ -7,7 +7,7 @@ export class User{
     address?:string;
     verified?:boolean;
     verificationCode?:string;
-    phoneNumber?:string;
+    phoneNbr?:string;
     token?:string;
     role?:string;
 
