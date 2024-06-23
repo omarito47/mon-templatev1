@@ -8,16 +8,25 @@ import { Router } from '@angular/router';
 })
 export class NavbarV2Component implements OnInit {
 
+  userRole: string;
+  userId:string;
+
+  ngOnInit() {
+    // Retrieve the user's role from local storage
+    this.userRole = localStorage.getItem('role');
+    // Retrieve the user id from local storage
+    this.userId = localStorage.getItem('userId');
+    
+  }
   constructor(
     private router : Router
   ) { }
 
-  ngOnInit(): void {
-  }
+  
 
-  logout(){
+   logout(){
     localStorage.clear()
-    this.router.navigateByUrl('auth/login')
+    this.router.navigateByUrl('/auth/login')
   }
 
 }

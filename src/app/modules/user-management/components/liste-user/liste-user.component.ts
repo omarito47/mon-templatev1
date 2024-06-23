@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./liste-user.component.scss'],
 })
 export class ListeUserComponent implements OnInit {
+
   users: User[] = [];
   private apiUrl = 'http://127.0.0.1:9090/user/';
   private httpOptions = {
@@ -44,6 +45,7 @@ export class ListeUserComponent implements OnInit {
   }
 
   editUser(id:any){
+    localStorage.setItem('fromListUser', "true");
     const url = "users/edit/"+id
     this.router.navigateByUrl(url)
   }

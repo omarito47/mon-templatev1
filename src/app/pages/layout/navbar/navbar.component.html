@@ -10,9 +10,9 @@
         menu
       </mat-icon>
     </button>
-    <a class="navbar-brand me-0 px-3 fs-6 slide-in-blurred-top" href="#" [routerLink]="'liste-user'">
+    
       <img src="../../../../../assets/images/logo.jpg" class="logo">
-    </a>
+    
   </div>
 
 
@@ -69,19 +69,19 @@
         <mat-icon mat-list-icon class="icon-link">group</mat-icon>
         <span>Dashbord</span>
       </mat-list-item>
-      <mat-list-item [routerLink]="'liste-user'" routerLinkActive="active" class="list-item"
+      <!-- <mat-list-item [routerLink]="'liste-user'" routerLinkActive="active" class="list-item"
         *ngIf="userRole == 'admin'">
         <mat-icon mat-list-icon class="icon-link">group</mat-icon>
         <span>List Users</span>
-      </mat-list-item>
+      </mat-list-item> -->
       <!-- <mat-list-item [routerLink]="'view-user'" routerLinkActive="active" class="list-item">
         <mat-icon mat-list-icon class="icon-link">person</mat-icon>
         <span >Users</span>
         </mat-list-item> -->
-      <mat-list-item [routerLink]="'users/add'" routerLinkActive="active" class="list-item" *ngIf="userRole == 'admin'">
-        <mat-icon mat-list-icon class="icon-link">group_add</mat-icon>
-        <span>Add User</span>
-      </mat-list-item>
+        <mat-list-item [routerLink]="'users/edit/'+userId" routerLinkActive="active" class="list-item" >
+          <mat-icon mat-list-icon class="icon-link">group_add</mat-icon>
+          <span>Profile</span>
+        </mat-list-item>
 
       <mat-list-item [routerLink]="'type-event'" routerLinkActive="active" class="list-item">
         <mat-icon mat-list-icon class="icon-link">access_time</mat-icon>

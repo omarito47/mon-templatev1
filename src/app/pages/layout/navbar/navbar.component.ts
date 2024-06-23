@@ -12,10 +12,14 @@ import { Router } from '@angular/router';
 export class NavbarComponent {
   screenWidth!: number;
   userRole: string;
+  userId:string;
 
   ngOnInit() {
     // Retrieve the user's role from local storage
     this.userRole = localStorage.getItem('role');
+    // Retrieve the user id from local storage
+    this.userId = localStorage.getItem('userId');
+    
   }
 
   public isExpanded: boolean = false;

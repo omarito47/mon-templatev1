@@ -30,6 +30,10 @@ export class LoginComponent implements OnInit {
   navigateToForgotPassword() {
     this.router.navigate(['/forgot-password']);
   }
+  editUser(id:any){
+    const url = "users/edit/"+id
+    this.router.navigateByUrl(url)
+  }
 
   submitForm() {
     this.formSubmitted = true;
@@ -48,9 +52,18 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('userId', response.userId);
             localStorage.setItem('token', response.token);
             localStorage.setItem('role', response.role);
+            localStorage.setItem('fromListUser', "false");
+
+            if(response.role==='admin'){
+              this.router.navigate(['/dashboard']);
+
+
+            }else{
+              //this.editUser(response.userId)
+              this.router.navigate(['/nav2/edit-user/' + response.userId]);
+            }
 
             // Redirect to the home page
-            this.router.navigate(['/liste-user']);
           },
           (error) => {
             console.error(error.error);

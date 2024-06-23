@@ -43,6 +43,13 @@ const routes: Routes = [
         path: '',
         loadChildren: () =>
           import('../../modules/reservation/reservation.module').then((m) => m.ReservationModule),
+        canActivate: [AuthGuard]
+      },
+      {
+        path: '',
+        loadChildren: () =>
+          import('../../modules/user-management/user-management.module').then((m) => m.UserManagementModule),
+        canActivate: [AuthGuard]
       },
     ],
   },

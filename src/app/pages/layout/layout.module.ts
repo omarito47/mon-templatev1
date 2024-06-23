@@ -15,6 +15,8 @@ import { HeaderNotificationComponent } from './header-notification/header-notifi
 import { NavbarV2Component } from './navbar-v2/navbar-v2.component';
 import { AngularSplitModule } from 'angular-split';
 import { NavSplitComponent } from './nav-split/nav-split.component';
+import { UserFormComponent } from 'src/app/modules/user-management/components/user-form/user-form.component';
+import { UserFormClientComponent } from 'src/app/modules/user-management/components/user-form-client/user-form-client.component';
 
 @NgModule({
   declarations: [

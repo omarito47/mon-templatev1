@@ -19,17 +19,20 @@ import { MatTooltipModule} from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularSplitModule } from 'angular-split';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { DashbordComponent } from './components/dashbord/dashbord.component';
+import { UserFormClientComponent } from './components/user-form-client/user-form-client.component';
 @NgModule({
   declarations: [
     ListeUserComponent,
     ViewUserComponent,
     UserFormComponent,
     DashbordComponent,
+    UserFormClientComponent
   ],
   imports: [
     CommonModule,
@@ -53,8 +56,8 @@ import { DashbordComponent } from './components/dashbord/dashbord.component';
 
     TableModule,
     ButtonModule,
-    FormsModule
-
+    FormsModule,
+    MatSnackBarModule
 
 
   ]
